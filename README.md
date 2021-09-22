@@ -4,5 +4,6 @@ This project was a tech test for Advantage Microsystems
 
 
 Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Using node.js server, use - npm start - to deploy the app on useable port.
+Open [http://localhost:useable port](http://localhost:useableport) to view it in the browser.
 
