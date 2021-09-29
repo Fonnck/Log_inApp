@@ -4,30 +4,24 @@ import axios from "axios";
 import Header from "../Header";
 import { ApiUrl } from "../services/api.js";
 
-class UserPage extends React.Component {
+class PropertyDetail extends React.Component {
 
     state = {
-        properties: []
-    }
-
-    clickProperty(id) {
-     this.props.history.push("/userpage/" + id)
+        property: []
     }
 
     componentDidMount() {
+        let id = this.props.match.params.id;
 
         axios.post(ApiUrl, {
+
             "IDClient": "$#HHJGUY9773H5MNKD65389745KJDFGDGG==",
             "ServiceName": "AdminService",
             "WSToken": "$#HHJGUYUHSDFGS546546DFH654SGHUJJFF==",
-            "MethodHash": "java.util.List_getPropiedadesCatalogPorPropiedad_String_Object_Number",
-            "ArgumentList": [
-                null,
-                null,
-                null
-            ]
-        },
-        {headers: {}}).then(rps => {
+            "MethodHash": "com.admin.bean.Propiedades_getPropiedades_Number",
+            "ArgumentList": [{ id }]
+
+        }).then(rps => {
             console.log(rps);
             this.setState({
                 properties: rps.data.DataBeanProperties.ObjectValue
@@ -59,7 +53,7 @@ class UserPage extends React.Component {
                             </tr>
                         </thead>
                         <tbody>
-                            {this.state.properties.map((value, i) => {
+                            {this.state.property.map((value, i) => {
                                 return (
                                     <tr key={i} onClick={() => this.clickProperty(value.IDPropiedades)}>
 
@@ -83,4 +77,4 @@ class UserPage extends React.Component {
     }
 }
 
-export default UserPage;
+export default PropertyDetail;
